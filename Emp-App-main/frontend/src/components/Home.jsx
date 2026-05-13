@@ -38,7 +38,7 @@ function Home() {
         </div>
 
         {/* NAVIGATION BUTTONS */}
-        {/* <div className="mt-10 flex justify-center gap-6 flex-wrap">
+          <div className="mt-10 flex justify-center gap-6 flex-wrap">
           <button
             onClick={() => navigate("/list-emps")}
             className="bg-white text-blue-700 px-8 py-4 rounded-2xl text-xl font-semibold shadow-xl hover:scale-105 transition duration-300"
@@ -53,7 +53,7 @@ function Home() {
             Add Employee
           </button>
         </div>
-      </section> */}
+      </section> 
 
       {/* KEY FEATURES */}
       <section className="py-16 px-6">
