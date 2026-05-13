@@ -1,15 +1,8 @@
-import {useContext} from 'react'
-import {counterContextObject} from '../contexts/ContextProvider'
 import React from "react";
 import { Link } from "react-router";
 
 function Home() {
-  const {counter,changeCounter}=useContext(counterContextObject)
   return (
-    <div>
-      <h1 className='text-5xl'>Counter: {counter}</h1>
-      <button onClick={changeCounter} className='p-4 bg-amber-400'>Change Count</button>
-    </div>
     <div className="bg-gradient-to-br from-slate-100 to-blue-100 min-h-screen text-gray-800">
 
       {/* Hero Section */}
@@ -209,5 +202,4 @@ function Home() {
   );
 }
 
-
-export default Home
+export default Home;
