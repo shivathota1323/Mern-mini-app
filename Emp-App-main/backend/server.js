@@ -1,58 +1,69 @@
 import exp from 'express'
-import {config} from 'dotenv'
-import {connect} from 'mongoose'
-import {empApp} from './APIs/EmployeeAPI.js'
+import { config } from 'dotenv'
+import { connect } from 'mongoose'
+import { empApp } from './APIs/EmployeeAPI.js'
 import cors from 'cors'
-import path from 'path'
 
 config()
 
-const app=exp()
+const app = exp()
 
-//add cors middleware
+// CORS middleware
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173'
+    origin: process.env.FRONTEND_URL || 'https://vercel.com/shivathota1323s-projects/mern-mini-app',
+    credentials: true
 }))
 
+// middleware
 app.use(exp.json())
 
-const port=process.env.PORT || 3000
+// routes
+app.use("/emp-api", empApp)
 
-//Serve static files from frontend/dist
-const __dirname = path.resolve()
-app.use(exp.static(path.join(__dirname, 'frontend/dist')))
+const port = process.env.PORT || 3000
 
-app.use("/emp-api",empApp)
-
-//Catch-all route to serve frontend index.html
-app.get('{*path}', (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend/dist/index.html'))
-})
-
-async function connectDB(){
-    try{
+// DB connection + server start
+async function connectDB() {
+    try {
         await connect(process.env.DB_URL)
         console.log("DB connected successfully")
-        app.listen(port,()=>{console.log(`Your server is running in port ${port}...`)})
-    }
-    catch(err){
-        console.log("error in DB connection",err)
+
+        app.listen(port, () => {
+            console.log(`Your server is running on port ${port}...`)
+        })
+
+    } catch (err) {
+        console.log("Error in DB connection", err)
     }
 }
+
 connectDB()
 
-app.use((err,req,res,next)=>{
-    // res.json({message:"error occured",error:err.message})
-    //Validation error
+// Global error handler
+app.use((err, req, res, next) => {
+
     console.log(err.name)
     console.log(err.code)
-    if(err.name==="ValidationError"){
-        return res.status(400).json({message:"Error occured in validation",error:err.message})
+
+    // Validation Error
+    if (err.name === "ValidationError") {
+        return res.status(400).json({
+            message: "Error occurred in validation",
+            error: err.message
+        })
     }
-    //Cast Error
-    if(err.name==="CastError"){
-        return res.status(400).json({message:"Error occured",error:err.message})
+
+    // Cast Error
+    if (err.name === "CastError") {
+        return res.status(400).json({
+            message: "Error occurred",
+            error: err.message
+        })
     }
-    //send server side error
-    res.status(500).json({message:"Error occured",error:err.message})
+
+    // Server Error
+    res.status(500).json({
+        message: "Error occurred",
+        error: err.message
+    })
 })
