@@ -1,5 +1,7 @@
 import {useContext} from 'react'
 import {counterContextObject} from '../contexts/ContextProvider'
+import React from "react";
+import { Link } from "react-router";
 
 function Home() {
   const {counter,changeCounter}=useContext(counterContextObject)
