@@ -1,23 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router";
+import { counterContextObject } from "../contexts/ContextProvider";
 
 function Home() {
+  const { counter, changeCounter } =
+    useContext(counterContextObject);
+
   return (
     <div className="bg-gradient-to-br from-slate-100 to-blue-100 min-h-screen text-gray-800">
 
       {/* Hero Section */}
       <section className="text-center py-20 px-6 bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-lg">
-        <h1 className="text-5xl font-bold mb-5">
+        <h1 className="text-5xl md:text-6xl font-bold mb-5">
           Employee Management System
         </h1>
 
         <p className="text-xl max-w-3xl mx-auto leading-relaxed">
-          A modern MERN Stack Employee Management Application that helps
-          organizations manage employee information efficiently with
-          simplicity, speed, and security.
+          A powerful and modern MERN Stack Employee Management
+          Application designed to simplify employee management,
+          improve productivity, and provide a clean user experience.
         </p>
 
-        <div className="mt-8 flex justify-center gap-4 flex-wrap">
+        {/* Counter Section */}
+        <div className="mt-10 bg-white text-gray-800 inline-block px-8 py-6 rounded-2xl shadow-xl">
+          <h2 className="text-3xl font-bold mb-4">
+            Counter: {counter}
+          </h2>
+
+          <button
+            onClick={changeCounter}
+            className="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-6 py-3 rounded-xl transition duration-300"
+          >
+            Change Count
+          </button>
+        </div>
+
+        <div className="mt-10 flex justify-center gap-5 flex-wrap">
           <Link
             to="/employees"
             className="bg-white text-blue-700 px-6 py-3 rounded-xl font-semibold shadow-md hover:scale-105 transition"
@@ -47,8 +65,8 @@ function Home() {
               Employee Management
             </h3>
             <p>
-              Easily add, update, remove, and manage employee records with a
-              clean and user-friendly interface.
+              Add, edit, delete, and organize employee
+              records with a professional and clean interface.
             </p>
           </div>
 
@@ -57,8 +75,8 @@ function Home() {
               Fast Performance
             </h3>
             <p>
-              Built using React and Node.js for smooth performance and quick
-              loading times.
+              Built using modern MERN technologies for fast
+              loading speed and smooth user experience.
             </p>
           </div>
 
@@ -67,8 +85,8 @@ function Home() {
               Secure Database
             </h3>
             <p>
-              MongoDB stores employee details securely while Express handles
-              backend APIs efficiently.
+              Employee information is securely stored in
+              MongoDB for reliable data management.
             </p>
           </div>
         </div>
@@ -82,20 +100,22 @@ function Home() {
           </h2>
 
           <p className="text-lg leading-9 text-justify">
-            This Employee Management System is a full-stack MERN application
-            developed to simplify employee information handling in an
-            organization. Instead of manually storing employee records in
-            spreadsheets or documents, this application allows administrators
-            and organizations to maintain employee details digitally in a more
-            structured and professional way. The application provides features
-            such as adding employees, editing employee information, viewing
-            employee details, and deleting records whenever required. By using
-            this system, organizations can reduce manual errors, improve
-            productivity, and maintain data consistency. The application is
-            designed with a clean user interface to provide a better experience
-            for users. Since it uses modern web technologies, it is fast,
-            responsive, and easy to access from different devices including
-            desktops, laptops, and mobile phones.
+            This Employee Management System is a complete
+            MERN stack application developed to simplify
+            employee information management for organizations,
+            institutions, and businesses. Instead of storing
+            employee details manually in files or spreadsheets,
+            this application enables users to digitally manage
+            records in an organized manner. It allows users
+            to add employee information, update details when
+            required, view employee records, and delete data
+            whenever necessary. The application focuses on
+            speed, simplicity, and user experience. Since it
+            is built with modern technologies, it performs
+            efficiently and works across multiple devices.
+            Organizations can reduce paperwork, improve
+            productivity, and save valuable time by using
+            this system in day-to-day operations.
           </p>
         </div>
       </section>
@@ -108,24 +128,26 @@ function Home() {
           </h2>
 
           <p className="text-lg leading-9 text-justify">
-            This application can be used in many professional environments where
-            employee data needs to be organized efficiently. Companies can use
-            this system to maintain employee profiles, job roles, departments,
-            email information, and contact details in one centralized platform.
-            Educational institutions may also use it to manage staff records.
-            Startups and small businesses can benefit greatly because the app
-            provides a simple and affordable way to organize workforce
-            information digitally. Another major use is quick employee searching
-            and editing, which saves time compared to paper-based systems.
-            Instead of maintaining files physically, organizations can instantly
-            update employee details and retrieve information whenever required.
-            This improves management efficiency and helps decision-making become
-            faster and more reliable.
+            This application is useful in organizations,
+            startups, offices, schools, and institutions
+            where employee or staff data needs proper
+            organization. Businesses can use this system to
+            maintain records such as employee names, emails,
+            phone numbers, company information, and job
+            roles. Instead of handling paper documents,
+            everything is digitally managed inside one
+            platform. HR teams can quickly search for
+            employees and update information instantly.
+            Small businesses benefit because the application
+            is lightweight and easy to maintain. Educational
+            institutions can also adapt this system for
+            managing staff records. Overall, the app improves
+            efficiency and reduces manual errors.
           </p>
         </div>
       </section>
 
-      {/* Why This App */}
+      {/* Why This */}
       <section className="max-w-6xl mx-auto px-6 py-10">
         <div className="bg-white rounded-3xl shadow-lg p-8">
           <h2 className="text-4xl font-bold text-purple-700 mb-5">
@@ -133,24 +155,26 @@ function Home() {
           </h2>
 
           <p className="text-lg leading-9 text-justify">
-            This Employee Management System stands out because of its
-            simplicity, speed, and modern architecture. Unlike traditional
-            employee record systems that require manual handling, this app
-            automates data management and makes information easily accessible.
-            The interface is designed to be simple enough for beginners while
-            still looking modern and professional. Since the application is
-            powered by the MERN stack, it provides high performance, better
-            scalability, and improved security. Users can manage employee data
-            without confusion, thanks to organized pages and clean navigation.
-            The application also reduces paperwork and minimizes human errors,
-            making it a reliable solution for organizations. It is lightweight,
-            responsive, and suitable for academic projects as well as real-world
-            business requirements.
+            This application stands out because it is simple,
+            modern, fast, and highly practical. Traditional
+            employee management methods often involve
+            paperwork, Excel sheets, and manual updates,
+            which can consume a lot of time and effort.
+            This app provides a digital solution where
+            everything can be managed from one interface.
+            Since the project uses the MERN stack, it offers
+            high performance, better scalability, and smooth
+            functionality. The clean design makes navigation
+            easier for users of all experience levels. It
+            also reduces errors and improves productivity.
+            Whether for academic purposes or real-world
+            business use, this project offers a professional
+            and effective solution.
           </p>
         </div>
       </section>
 
-      {/* How to Use */}
+      {/* How To Use */}
       <section className="max-w-6xl mx-auto px-6 py-10">
         <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-3xl shadow-lg p-8">
           <h2 className="text-4xl font-bold text-orange-600 mb-5">
@@ -158,24 +182,25 @@ function Home() {
           </h2>
 
           <p className="text-lg leading-9 text-justify">
-            Using this Employee Management System is very simple and
-            user-friendly. First, users can open the application and navigate
-            through the homepage to understand its functionality. To add a new
-            employee, users can select the "Add Employee" option and enter
-            employee details such as name, designation, company name, mobile
-            number, and email address. Once submitted, the information is saved
-            in the database. Users can also view all employees through the
-            employee list page where details are displayed clearly. If any
-            information needs correction, the edit feature can be used to modify
-            employee details instantly. Similarly, unwanted records can be
-            removed using delete functionality. This simple workflow makes the
-            system efficient, practical, and easy to understand even for new
-            users.
+            Using this Employee Management System is very
+            easy. Users can start by opening the homepage
+            and exploring the available features. To add
+            a new employee, click on the Add Employee
+            button and enter details such as employee name,
+            email, mobile number, designation, and company
+            information. Once submitted, the employee data
+            gets stored in the database. Users can then
+            view employee records from the employee list
+            section. If information changes, the edit
+            feature allows modifications instantly. Users
+            can also remove employee records if needed.
+            The workflow is simple, making it suitable for
+            beginners and professional users alike.
           </p>
         </div>
       </section>
 
-      {/* MERN */}
+      {/* About MERN */}
       <section className="max-w-6xl mx-auto px-6 py-10 pb-20">
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-3xl shadow-lg p-8">
           <h2 className="text-4xl font-bold text-cyan-300 mb-5">
@@ -183,18 +208,21 @@ function Home() {
           </h2>
 
           <p className="text-lg leading-9 text-justify">
-            MERN is one of the most popular full-stack development technologies
-            used for building modern web applications. The term MERN stands for
-            MongoDB, Express.js, React.js, and Node.js. MongoDB is used as the
-            database to store data efficiently in document format. Express.js is
-            used to create APIs and manage backend server logic. React.js helps
-            build fast and interactive user interfaces with reusable components.
-            Node.js acts as the runtime environment that allows JavaScript to
-            run on the server side. Together, these technologies create a
-            powerful development ecosystem that enables developers to build
-            scalable, secure, and responsive applications. MERN stack is widely
-            preferred because it uses JavaScript throughout the entire
-            application, making development easier and more consistent.
+            MERN Stack is one of the most popular
+            technologies used for modern web development.
+            The term MERN represents MongoDB, Express.js,
+            React.js, and Node.js. MongoDB acts as the
+            database for storing employee information in a
+            flexible format. Express.js manages backend APIs
+            and handles requests from the frontend. React.js
+            is used to build fast and dynamic user interfaces
+            through reusable components. Node.js provides
+            server-side execution for JavaScript. Together,
+            these technologies create a powerful ecosystem
+            for developing scalable, secure, and efficient
+            applications. Since JavaScript is used
+            throughout the stack, development becomes easier
+            and more consistent.
           </p>
         </div>
       </section>
